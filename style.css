@@ -1,0 +1,101 @@
+:root {
+  --flower-bg: #d8e0e3;
+  --flower-petal-color: #b0c4de;
+  --glow-color: #afeeee;
+  --stem-color: #6a7e6a;
+  --bg-color: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+.night {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  z-index: -1;
+}
+
+.flowers {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flower {
+  position: absolute;
+}
+
+.flower--1 {
+  transform: translateX(-50%) translateY(-10%) scale(1.2);
+}
+
+.flower__leafs {
+  position: relative;
+  animation: blooming-flower 3s 1s ease-in-out forwards;
+}
+
+.flower__leaf {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 50px;
+  height: 60px;
+  background: radial-gradient(circle, #fff, var(--flower-petal-color));
+  border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+  transform-origin: bottom center;
+  box-shadow: 0 0 10px rgba(176, 196, 222, 0.5);
+  opacity: 0;
+  animation: blooming-leaf 2s 2s ease-in-out forwards;
+}
+
+/* The full CSS includes styles for:
+   - Petal positioning (.flower__leaf--1 to .flower__leaf--4)
+   - Flower center circle (.flower__white-circle)
+   - Glowing light effects (.flower__light)
+   - Stem and leaf animations (.flower__line, .flower__line__leaf)
+   - Grass elements (.growing-grass, .flower__grass)
+   - Keyframe animations for blooming and growth
+*/
+
+/* Example of keyframe animations */
+@keyframes blooming-flower {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes blooming-leaf {
+  0% { transform: rotate(0deg) scale(0); opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes light-animation {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* Please refer to the full CSS code from the source:cite[1] for all necessary styles */
